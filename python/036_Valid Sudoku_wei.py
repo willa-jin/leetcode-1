@@ -5,6 +5,16 @@
 #         :rtype: bool
 #         """
 class Solution(object):
+    #
+    def isValidSudoku(self, board):
+        seen = []
+        for i, row in enumerate(board):
+            for j, c in enumerate(row):
+                if c != '.':
+                    seen.extend([(i, c), (c, j), (i//3, j//3, c)])
+         return len(seen) == len(set(seen))
+       
+    
     def isValidSudoku(self, board):
         vset = [0] * 9
         hset = [0] * 9

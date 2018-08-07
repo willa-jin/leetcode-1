@@ -13,8 +13,10 @@ class Solution(object):
                 continue
             for j in xrange(i * i, n, i):
                 isPrime[j] = False
-        count = 0
-        for i in xrange(2, n):
-            if isPrime[i]:
-                count += 1
-        return count
+#        count = 0
+#        for i in xrange(2, n):
+#            if isPrime[i]:
+#                count += 1
+
+# isPrime staring from 0. 0, 1 are not prime. count should start from 2:
+        return sum(isPrime[2:])

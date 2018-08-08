@@ -38,9 +38,9 @@ class Solution(object):
         p = 2 * (numRows - 1)
         result = [""] * numRows
         for i in xrange(len(s)):
-            floor = i % p
-            if floor >= p//2:
-                floor = p - floor
+            floor = i % p # which rows
+            if floor >= p//2: # right half
+                floor = p - floor #  count from top which row it is. if left half, floor = floor
             result[floor] += s[i]
         return "".join(result)
 

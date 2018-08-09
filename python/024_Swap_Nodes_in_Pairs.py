@@ -26,7 +26,9 @@ class Solution(object):
     #             last = nex
     #         current = nex
     #     return head
-
+    
+    
+    # To go from pre -> a -> b -> b.next to pre -> b -> a -> b.next, 
     def swapPairs(self, head):
         dummyHead = ListNode(-1)
         dummyHead.next = head

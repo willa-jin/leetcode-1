@@ -25,3 +25,33 @@ class Solution(object):
             return False
         except:
             return False
+        
+        
+      # stack
+    
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        
+        if not root:
+            return True
+        
+        stack = [(root.left, root.right)]
+        
+        while len(stack) > 0:
+            pair = stack.pop(0)
+            left = pair[0]
+            right = pair[1]
+            
+            if not left and not right:
+                continue
+            elif not left or not right:
+                return False
+            elif left.val == right.val:
+                stack.insert(0, (left.left, right.right))
+                stack.insert(0, (left.right, right.left))
+            else:
+                return False
+         return True

@@ -26,12 +26,15 @@ class Solution(object):
     #     return head.next
 
     def deleteDuplicates(self, head):
-        if head is None:
+        if not head:
             return None
+        
         pos = head
-        while pos is not None and pos.next is not None:
+        
+        while pos and pos.next:
             if pos.val == pos.next.val:
-                pos.next = pos.next.next
+                pos.next = pos.next.next # it is ok that pos.next.next == None
             else:
                 pos = pos.next
         return head
+

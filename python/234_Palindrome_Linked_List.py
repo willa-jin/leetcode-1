@@ -49,3 +49,19 @@ class Solution(object):
             p1 = p1.next
             p3 = p3.next
         return True
+    
+    
+    # python short cut
+    
+    def isPalindrome(self, head):
+        l = []
+        current = head
+        
+        while current:
+            l.append(current.val)
+            current = current.next
+            
+        if l == l[::-1]:
+            return True
+        else:
+            return False

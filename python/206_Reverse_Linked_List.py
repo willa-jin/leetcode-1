@@ -60,12 +60,25 @@ class Solution(object):
     #         curr = next_temp
     #     return prev
 
+    # def reverseList(self, head):
+    #    # recursion
+    #   # simple recursively without extra space
+    #    if head is None or head.next is None:
+    #        return head
+    #    p = self.reverseList(head.next)
+    #    head.next.next = head
+    #    head.next = None
+    #    return p
+    
+    
+    # 3 pointer to keep track prev, current, nxt
+    # https://www.youtube.com/watch?v=esl_A_pzBcg
+    
     def reverseList(self, head):
-        # recursion
-        # simple recursively without extra space
-        if head is None or head.next is None:
-            return head
-        p = self.reverseList(head.next)
-        head.next.next = head
-        head.next = None
-        return p
+        prev, current, nxt = None, head, None
+        
+        while current:
+            nxt, current.next = current.next, prev
+            prev, current = current, next
+            
+        return prev

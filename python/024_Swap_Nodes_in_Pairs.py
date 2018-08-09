@@ -28,17 +28,21 @@ class Solution(object):
     #     return head
     
     
-    # To go from pre -> a -> b -> b.next to pre -> b -> a -> b.next, 
-    def swapPairs(self, head):
-        dummyHead = ListNode(-1)
-        dummyHead.next = head
-        prev, p = dummyHead, head
-        while p != None and p.next != None:
-            q, r = p.next, p.next.next
-            prev.next = q
-            q.next = p
-            p.next = r
-            prev = p
-            p = r
-        return dummyHead.next
+    # To go from pre -> a -> b -> b.next to pre -> b -> a -> b.next, need to change three reference
+	
+	def swapPairs(self, head):
+		dummyHead = ListNode(-1)
+		dummyHead.next = head
+		
+		prev = dummyHead
+		
+		while prev.next and prev.next.next:
+			a = prev.next
+			b = prev.next.next
+			prev.next, b.next, a.next  = b, a, b.next
+			prev = a
+		return dummyHead.next
+	
+	
+
         

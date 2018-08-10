@@ -22,7 +22,7 @@ class Solution(object):
             return False
         divisors = [2, 3, 5]
         for d in divisors:
-            while num % d == 0:
+            while num % d == 0:  # while loop in a for: as long as one of the divisors have num % d, num = num / d
                 num /= d
         return num == 1
 

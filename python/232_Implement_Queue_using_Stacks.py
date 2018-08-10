@@ -39,13 +39,15 @@
 #         """
 #         return len(self.stack1) == 0
 
+
+
 class Queue(object):
     def __init__(self):
         """
         initialize your data structure here.
         """
-        self.stack1 = []
-        self.stack2 = []
+        self.main_stack = []
+        self.temp_stack = []
 
 
     def push(self, x):
@@ -53,31 +55,38 @@ class Queue(object):
         :type x: int
         :rtype: nothing
         """
-        self.stack1.append(x)
+        self.main_stack.append(x)
 
     def pop(self):
         """
         :rtype: nothing
         """
-        if len(self.stack2) == 0:
-            while len(self.stack1):
-                curr = self.stack1.pop()
-                self.stack2.append(curr)
-        self.stack2.pop()
+        
+        while self.main_stack:
+            self.temp_stack.append(self.main_stack.pop())
+        ret = self.temp_stack.pop()
+        
+        while self.temp_stack:
+            self.main_stack.append(self.temp_stack.pop())
+        
+        return ret
 
 
     def peek(self):
         """
         :rtype: int
         """
-        if len(self.stack2) == 0:
-            while len(self.stack1):
-                curr = self.stack1.pop()
-                self.stack2.append(curr)
-        return self.stack2[-1]
+        while self.main_stack:
+            self.temp_stack.append(self.main_stack.pop())
+        ret = self.temp_stack[-1]
+        
+        while self.temp_stack:
+            self.main_stack.append(self.temp_stack.pop())
+            
+        return ret
 
     def empty(self):
         """
         :rtype: bool
         """
-        return len(self.stack1) + len(self.stack2) == 0
+        return len(self.main_stack) == 0

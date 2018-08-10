@@ -19,17 +19,21 @@ class Solution(object):
     #     root.left = right
     #     root.right = left
     #     return root
-
+    
+    
     def invertTree(self, root):
         # iteratively
-        if root is None:
+        
+        if not root:
             return None
-        queue = [root]
-        while len(queue):
-            curr = queue.pop(0)
-            curr.left, curr.right = curr.right, curr.left
-            if curr.left is not None:
-                queue.append(curr.left)
-            if curr.right is not None:
-                queue.append(curr.right)
+        
+        stack = [root]
+        
+        while stack:
+            node = stack.pop() # BFS
+            if node:
+                node.left, node.right = node.right, node.left
+                stack.extend([node.left, node.right])
+        
         return root
+        

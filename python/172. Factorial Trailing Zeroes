@@ -1,0 +1,19 @@
+class Solution(object):
+    def trailingZeroes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        
+        # num_of_zeros = n//5 + n//5^2 + n//5^3 + n//5^N ...
+        #例1 : n=15。那么在15! 中 有3个5(来自其中的5, 10, 15)， 所以计算n/5就可以。
+        #例2 : n=25。与例1相同，计算n/5，可以得到5个5，分别来自其中的5, 10, 15, 20, 25，但是在25中其实是包含2个5的，这一点需要注意。
+        #所以除了计算n/5， 还要计算n/5/5, n/5/5/5, n/5/5/5/5, ..., n/5/5/5,,,/5直到商为0
+        
+        num_zero = 0
+        
+        while n // 5 != 0:
+            num_zero += n // 5
+            n = n // 5
+        
+        return num_zero

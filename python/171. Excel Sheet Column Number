@@ -1,0 +1,20 @@
+class Solution(object):
+    def titleToNumber(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+        s_r = s[::-r]
+        
+        offset = ord('A')
+        total = 0
+        i = 0
+        
+        for c in s_r:
+            number = ord(c) - offset + 1
+            curr = 26 ** i * number
+            total += curr
+            i += 1
+            
+        return total 

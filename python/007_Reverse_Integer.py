@@ -37,3 +37,25 @@ class Solution:
                 return 0
             x /= 10
         return res * isPos
+    
+    
+    def reverse(self, x):
+        negative = False
+        
+        if x < 0:
+            negative = True
+            x = x * (-1)
+        x_s = str(x)
+        r = x_s[::-1]
+        
+        if negative:
+            r = r * (-1)
+            
+        if  -2 ** 31 <= r < 2 ** 31:
+            return 0
+        else:
+            return r
+            
+       
+            
+      

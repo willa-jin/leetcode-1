@@ -41,4 +41,24 @@ class Solution(object):
             if record:
                 q.append(record)
         return [[x.val for x in level] for level in q]
+    
+    def levelOrder(self, root):
+        
+        if not root:
+            return []
+        
+        answer, level = [], [root]
+        
+        while level:
+            answer.append([node.val for node in level])
+            tmp = []
+            for node in level:
+                tmp.extend([node.left, node.right])
+            level = [leaf for leaf in temp if leaf]
+            
+       return answer
+
+    
+    
+    
 

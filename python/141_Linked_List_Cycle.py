@@ -38,6 +38,8 @@ class Solution(object):
 
     def hasCycle(self, head):
         # Two points
+        # 快指针fast一次走两步，慢指针slow一次走一步。
+        #如果有环，两指针必定在某一时间相遇。fast不会跳过slow。因为如果fast跳过slow，那么前一步它们必已经相遇。
         try:
             fast = head.next.next
             slow = head.next

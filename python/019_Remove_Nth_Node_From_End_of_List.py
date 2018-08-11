@@ -33,6 +33,8 @@ class Solution(object):
 
     def removeNthFromEnd(self, head, n):
         # https://leetcode.com/discuss/86721/o-n-solution-in-java
+        #http://bangbingsyb.blogspot.com/2014/11/leetcode-remove-nth-node-from-end-of.html
+        # 
         if head is None:
             return None
         slow = fast = head
@@ -41,7 +43,7 @@ class Solution(object):
         if fast is None:
             head = head.next
             return head
-        while fast.next is not None:
+        while fast.next is not None:  # while not fast.next  does not work 
             fast = fast.next
             slow = slow.next
         curr = slow.next

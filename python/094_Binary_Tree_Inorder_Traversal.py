@@ -57,23 +57,50 @@ class Solution(object):
     #             res.append(root.val)
     #             root = root.right
     #     return res
-
+    
+    
+    # divide and conqure
+class Solution:
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        
+        if not root:
+            return []
+        result = []
+        self.helper(root, result)
+        return result
+    
+    def helper(self, node, result):
+        if not node:
+            return 
+        self.helper(node.left, result) #  when reach the left leaf, node is null, return, execute resutl.append(leaf.val)
+        result.append(node.val)
+        self.helper(node.right, result)
+        
+        
+    #先把迭代到最左边的叶子节点，把所有途中的root放进stack，当左边走不通了，开始往res里面存数，并往右边走。
+    
     def inorderTraversal(self, root):
         if root is None:
             return []
-        res = []
-        stack = [root]
-        while len(stack) > 0:
-            curr = stack.pop()
-            if not isinstance(curr, TreeNode):
-                res.append(curr)
-                continue
-            if curr.right is not None:
-                stack.append(curr.right)
-            stack.append(curr.val)
-            if curr.left is not None:
-                stack.append(curr.left)
-        return res
+        
+        result, currNode, stack = [], root, []
+        
+        while stack or currNode:
+            while currNode:
+                stack.append(currNode)
+                currNode = currNode.left
+                
+           currNode = stack.pop()
+           result.append(currNode.val)
+           currNode = currNode.right
+        
+        return result
+                
+           
 
 
 

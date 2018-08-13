@@ -6,25 +6,25 @@
 #         self.right = None
 
 class Solution(object):
-    # def __init__(self):
-    #     self.result = []
-    #
-    # def preorderTraversal(self, root):
+     def preorderTraversal(self, root):
     #     """
     #     :type root: TreeNode
     #     :rtype: List[int]
     #     """
-    #     if root is None:
-    #         return []
-    #     self.preorderTraversalHelper(root)
-    #     return self.result
-    #
-    # def preorderTraversalHelper(self, node):
-    #     if node is None:
-    #         return
-    #     self.result.append(node.val)
-    #     self.preorderTraversalHelper(node.left)
-    #     self.preorderTraversalHelper(node.right)
+    # divide and conquer
+        if not root:
+            return []
+        result = []
+        self.helper(root,result)
+        return result
+    
+    def helper(self, node, result):
+        if not node:
+            return
+        result.append(node.val)
+        self.helper(node.left, result)
+        self.helper(node.right, result)
+
 
     def preorderTraversal(self, root):
         # stack

@@ -21,4 +21,4 @@ class Solution(object):
         left = self.hasPathSum(root.left, sum)
         # check right
         right = self.hasPathSum(root.right, sum)
-        return (left or right)
+        return (left or right) # one of them is True, return true

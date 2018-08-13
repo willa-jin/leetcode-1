@@ -18,7 +18,7 @@ class Solution(object):
         
         p1, p2 = m - 1, n - 1
         pos = m + n - 1
-        while p1 >= 0 and p2 >= 0:
+        while p1 >= 0 and p2 >= 0:  # condition is 'and': both nums still have elements. 
             if nums1[p1] >= nums2[p2]:
                 nums1[pos] = nums1[p1]
                 p1 -= 1

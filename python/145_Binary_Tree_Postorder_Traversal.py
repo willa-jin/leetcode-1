@@ -43,15 +43,15 @@ class Solution(object):
     def postorderTraversal(self, root):
         if root is None:
             return []
-        res = []; stack = [root]
-        while len(stack) > 0:
-            curr = stack.pop()
-            if not isinstance(curr, TreeNode):
-                res.append(curr)
-                continue
-            stack.append(curr.val)
-            if curr.right is not None:
-                stack.append(curr.right)
-            if curr.left is not None:
-                stack.append(curr.left)
-        return res
+        result, stack = [], [(root, False)]
+        
+        while stack:
+            node, flag = stack.pop()
+            if node:
+                if flag:
+                    result.append(node.val)
+                else:
+                    stack.append((node, True))
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+         return result

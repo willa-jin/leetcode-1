@@ -12,14 +12,14 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
-        if p == q:
+        # both empty
+        if not p and not q:
             return True
-        try:
-            left = right = True
-            if p.val == q.val:
-                left = self.isSameTree(p.left, q.left)
-                right = self.isSameTree(p.right, q.right)
-                return (left and right)
-        except:
+        # one of them is empty
+        if not p or not q:
             return False
-        return False
+        
+        if p.val != q.val:
+            return False
+        
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)

@@ -1,0 +1,66 @@
+"""
+template
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        this.val = val
+        this.left, this.right = None, None
+
+"""
+class Solution:
+    """
+    @param root: The root of binary tree.
+    @return: Preorder in list which contains node values.
+    """
+    
+    # recursively
+    def preorderTraversal(self, root):
+	    """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+		
+		if not root:
+			return []
+			
+		result = []
+		self.helper(root, result)
+		return result
+		
+	def helper(self, node, result):
+		if not node:
+			return
+		result.append(node.val)	
+		self.helper(node.left, result)
+		self.helper(node.right, result)
+		
+		
+	# iteratively
+    def preorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+		if not root:
+			return []
+			
+		result, stack = [], [root]
+		
+		whiel stack:
+			node = stack.pop()
+			result.append(node.val)
+			if node.right:
+				stack.append(node.right)
+			if node.left:
+				stack.append(node.left)
+				
+		return result
+			
+		
+	
+	
+		
+		
+
+		
+  

@@ -28,11 +28,31 @@ class Solution:
 		result.append(node.val)
 		
 #  iteratively
-	def postorderTraversal(self, root):
-			"""
-			:type root: TreeNode
-			:rtype: List[int]
-			"""
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+	
+	if not root:
+		return []
+	result = []
+	
+	stack = [(root, False)]
+	
+	while stack:
+		currNode, flag = stack.pop()
+		if currNode:
+			if flag:
+				result.append(currNode.val)
+			else:
+				stack.append((currNode, True))
+				stack.append((currNode.right, False))
+				stack.append((currNode.left, False))
+	return result
+		
+	
+
 
         
         

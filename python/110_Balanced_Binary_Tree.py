@@ -31,6 +31,26 @@ class Solution(object):
             return -1
         else:
             return max(ld, rd) + 1
+        
+    class Solution:
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        
+        def height(root):
+            if not root:
+                return 0
+            return max(height(root.left), height(root.right)) + 1
+        
+        left_height = height(root.left)
+        right_height = height(root.right)
+        
+        return abs(left_height - right_height) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
+        
     
 
     # https://discuss.leetcode.com/topic/7798/the-bottom-up-o-n-solution-would-be-better

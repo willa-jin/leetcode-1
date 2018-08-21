@@ -4,13 +4,21 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        count_map = {}
-        for c in s:
-            count_map[c] = count_map.get(c, 0) + 1
-        for i, c in enumerate(s):
-            if count_map[c] == 1:
-                return i
-        return -1
-
-    # def firstUniqChar(self, s):
-    #     min([s.find(c) for c in string.ascii_lowercase if s.count(c)==1] or [-1])
+        
+        hash_map = {}
+        
+        for index, l in enumerate(s):
+            if l in hash_map.keys():
+                hash_map[l].append(index)
+            else:
+                hash_map[l] = [index]
+                
+        once = [value[0] for key, value in hash_map.items() if len(value) == 1]
+        
+        if len(once) == 0:
+            return -1
+        
+        return min(once)
+          
+      
+    
